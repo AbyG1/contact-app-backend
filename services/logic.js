@@ -54,10 +54,37 @@ const addContact = (id, username, firstname, lastname, email, city, state, phone
     });
 };
 
+//get a particular employee from database
+
+const getAContact = (id) => {
+    return db.contact.findOne({id}).then((result) => {//result - details of an contact
+        if(result){
+            return {
+                statusCode:200,
+                contact:result
+            }
+        } else {
+
+            return{
+                statusCode:404,
+                message:'cant find contact'
+            }
+
+        }
+
+    })
+
+
+
+}
+
+
 
 
 
 module.exports = {
     getAllContacts,
-    addContact
+    addContact,
+    getAContact
+  
 }

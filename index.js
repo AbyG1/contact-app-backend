@@ -42,3 +42,23 @@ cmaServer.post('/add-contact',(req,res)=>{
     }))
 })
 
+
+//Api call for deleting an employee
+
+cmaServer.delete('/delete-a-contact/:id',(req,res) => {
+    logic.deleteContact(req.params.id).then
+    ((response) => {
+        res.status(response.statusCode).json
+        (response);
+    })
+})
+
+
+//Api call for get a contact details
+cmaServer.get('/get-a-contact/:id',(req,res)=>{
+    logic.getAContact(req.params.id).then((response) => {
+        //respons - a contact detail
+        res.status(response.statusCode).json(response);
+    })
+})
+
