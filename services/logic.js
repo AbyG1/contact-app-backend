@@ -78,6 +78,24 @@ const getAContact = (id) => {
 
 }
 
+//Delete an  employee from  the database
+const deleteContact=(id)=>{
+    return db.contact.deleteOne({id}).then((result)=>{
+        return{
+            statusCode:200,
+            message:"Contact deleted successfully"
+        }
+    })
+    .catch((error)=>{
+        return{
+            statusCode:401,
+            message:"Couldn't find contact"
+        }
+    })
+
+}
+
+
 
 
 
@@ -85,6 +103,7 @@ const getAContact = (id) => {
 module.exports = {
     getAllContacts,
     addContact,
-    getAContact
+    getAContact,
+    deleteContact
   
 }

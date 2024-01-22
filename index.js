@@ -48,10 +48,11 @@ cmaServer.post('/add-contact',(req,res)=>{
 cmaServer.delete('/delete-a-contact/:id',(req,res) => {
     logic.deleteContact(req.params.id).then
     ((response) => {
-        res.status(response.statusCode).json
-        (response);
+        res.status(response.statusCode).json(response);
     })
 })
+
+
 
 
 //Api call for get a contact details
