@@ -95,6 +95,36 @@ const deleteContact=(id)=>{
 
 }
 
+//update an employee details
+const updateAContact=(id,username,firstname,lastname,email,phone,city,state)=>{//updated data
+    return db.contact.findOne({id}).then((result)=>{//result - details of employees
+        if(result){
+            //assiging updated information to the database values
+           
+            result.username = username;
+            result.firstname = firstname;
+            result.lastname = lastname;
+            result.email = email;
+            result.phone = phone;
+            result.city = city;
+            result.state = state;
+
+            //save updated details into db
+            result.save()
+            
+                return {//send to frontend
+                    statusCode:200,
+                    message:"Contact data updated successfully"
+                }
+        }
+        else{
+                return {
+                    statusCode:404,
+                    message:'cant find contact'
+                }
+        }
+    })
+}
 
 
 
@@ -104,6 +134,7 @@ module.exports = {
     getAllContacts,
     addContact,
     getAContact,
-    deleteContact
+    deleteContact,
+    updateAContact
   
 }

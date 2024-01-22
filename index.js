@@ -63,3 +63,10 @@ cmaServer.get('/get-a-contact/:id',(req,res)=>{
     })
 })
 
+
+//API call for update an contact details
+cmaServer.post('/update-a-contact/:id',(req,res)=>{
+    logic.updateAContact(req.params.id,req.body.username,req.body.firstname,req.body.lastname,req.body.email,req.body.phone,req.body.city,req.body.state).then((response)=>{//response - an employees details
+        res.status(response.statusCode).json(response);
+    })
+})
