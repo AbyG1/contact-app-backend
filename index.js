@@ -34,3 +34,11 @@ cmaServer.get('/get-all-contacts',(req,res)=>{
         res.status(response.statusCode).json(response);
     })
 })
+
+//Api call to add an employee
+cmaServer.post('/add-contact',(req,res)=>{
+    logic.addContact(req.body.id,req.body.username,req.body.firstname,req.body.lastname,req.body.email,req.body.city,req.body.state,req.body.phone).then((response => {
+        res.status(response.statusCode).json(response)
+    }))
+})
+
